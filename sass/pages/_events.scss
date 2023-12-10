@@ -1,0 +1,116 @@
+@use "../abstracts/" as *;
+
+%flex-same {
+  display: flex;
+}
+
+%flex-direction-same {
+  flex-direction: column;
+}
+
+/* Events Section Start */
+
+.events {
+  @extend %flex-same;
+  align-items: center;
+  .events-column {
+    &.cards {
+      // @extend %flex-same;
+      // flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 30px;
+      width: 60%;
+      .box {
+        padding: $size-25;
+        background-color: $bg-color-5;
+        border-bottom: 4px solid $bg-color-3;
+        @include prefixes(border-radius, 10px);
+        .box-header {
+          margin-bottom: 15px;
+          h3 {
+            @include transition(color);
+          }
+        }
+        &:hover {
+          .box-header {
+            margin-bottom: 15px;
+            h3 {
+              color: $main-color;
+            }
+          }
+        }
+        .box-content {
+          @extend %flex-same;
+          align-items: center;
+          border-top: 1px dashed #aaa;
+          border-bottom: 1px dashed #aaa;
+          padding: $size-20 0;
+          .date {
+            @extend %flex-same;
+            @extend %flex-direction-same;
+            gap: 7px;
+            padding-right: $size-20;
+            .month {
+              @include style(
+                $size-16,
+                $font-weight-400,
+                capitalize,
+                $main-color
+              );
+            }
+            .year {
+              @include style($size-20, $font-weight-700, null, $black-color);
+            }
+          }
+          .location {
+            @extend %flex-same;
+            @extend %flex-direction-same;
+            gap: 10px;
+            padding-left: $size-20;
+            border-left: 1px dashed #aaa;
+            .location-box {
+              span {
+                display: block;
+                @include style(
+                  $size-16,
+                  $font-weight-700,
+                  capitalize,
+                  $black-color
+                );
+              }
+              p {
+                text-transform: capitalize;
+              }
+            }
+          }
+        }
+      }
+
+      @include single-max-breakpoints("laptop") {
+        width: 100%;
+      }
+    }
+    &.events-schedule {
+      width: 40%;
+      .schedule-content {
+        padding: $size-60;
+        @extend %flex-same;
+        @extend %flex-direction-same;
+        gap: 25px;
+        @include single-max-breakpoints("laptop") {
+          padding: $size-60 0;
+        }
+      }
+      @include single-max-breakpoints("laptop") {
+        width: 100%;
+      }
+    }
+  }
+  @include single-max-breakpoints("laptop") {
+    flex-direction: column;
+    align-items: start;
+  }
+}
+
+/* Events Section End */

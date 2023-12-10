@@ -1,0 +1,90 @@
+@use "../abstracts/" as *;
+
+%flex-same {
+  display: flex;
+}
+
+/* Student Section Start */
+
+.student {
+  background-color: $bg-color-6;
+  .student-container {
+    // Student Header
+    .student-header {
+      @extend %flex-same;
+      align-items: center;
+      justify-content: space-between;
+      @include single-max-breakpoints("tablet") {
+        align-items: start;
+        flex-direction: column;
+        gap: 20px;
+      }
+      .button {
+        a {
+          @include single-max-breakpoints("tablet") {
+            padding: $size-10 $size-20;
+          }
+        }
+      }
+    }
+    // Student body
+    .student-body {
+      display: grid;
+      column-gap: 30px;
+      row-gap: 90px;
+      .box {
+        padding: 0 $size-30 $size-30 $size-30;
+        @extend %flex-same;
+        flex-direction: column;
+        gap: 20px;
+        background-color: $white-color;
+        border-bottom: 3px solid $main-color;
+        @include prefixes(border-radius, 0 0 10px 10px);
+        .box-header {
+          @extend %flex-same;
+          align-items: end;
+          justify-content: space-between;
+          margin-top: -49px;
+          @include single-max-breakpoints("tablet") {
+            flex-direction: column;
+            align-items: start;
+            gap: 15px;
+          }
+          .image-box {
+            @extend %flex-same;
+            align-items: end;
+            gap: 10px;
+            .image {
+              img {
+                max-width: 128px;
+              }
+            }
+            .content {
+              @extend %flex-same;
+              flex-direction: column;
+            }
+          }
+          .stars-box {
+            span {
+              i {
+                font-size: 10px;
+                color: $star-color;
+              }
+            }
+          }
+        }
+        @include single-max-breakpoints("md-phone") {
+          padding: 0 $size-13 $size-13 $size-13;
+        }
+      }
+      @include single-max-breakpoints("md-phone") {
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      }
+      @include single-min-breakpoints("md-phone") {
+        grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+      }
+    }
+  }
+}
+
+/* End Section Start */

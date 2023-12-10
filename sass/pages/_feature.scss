@@ -1,0 +1,64 @@
+@use "../abstracts/" as *;
+
+/* Feature Section Start */
+.feature {
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    z-index: -1;
+    background-color: $main-color;
+    @media (max-width: 1515px) {
+      width: 100%;
+    }
+  }
+
+  .container {
+    .feature-boxs {
+      position: relative;
+      padding: $size-40 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 25px;
+      background-color: $main-color;
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 160px;
+        height: 100%;
+        background-color: $white-color;
+        @media (max-width: 1515px) {
+          display: none;
+        }
+      }
+      .box {
+        .title-h3 {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          h3 {
+            @include single-max-breakpoints("tablet") {
+              font-size: $font-size-18;
+            }
+          }
+        }
+        .text {
+          margin-top: 20px;
+        }
+        &.special {
+          display: flex;
+          align-items: center;
+        }
+      }
+      @include single-max-breakpoints("laptop") {
+        gap: 25px;
+      }
+    }
+  }
+}
+/* Feature Section End */

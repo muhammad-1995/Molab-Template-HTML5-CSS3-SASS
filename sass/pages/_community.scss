@@ -1,0 +1,63 @@
+@use "../abstracts/" as *;
+
+%flex-same {
+  display: flex;
+}
+
+/* Community Section Start */
+
+.community {
+  position: relative;
+  .image {
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    @include prefixes(transform, translateY(-50%));
+    img {
+      width: 300px;
+    }
+    @include single-max-breakpoints("laptop") {
+      display: none;
+    }
+    @media (max-width: 1500px) {
+      left: 0;
+    }
+  }
+  .container {
+    @extend %flex-same;
+    justify-content: center;
+    .community-content {
+      @extend %flex-same;
+      flex-direction: column;
+      gap: 30px;
+      text-align: center;
+      max-width: 650px;
+      .form {
+        @extend %flex-same;
+        align-items: center;
+        gap: 10px;
+        form {
+          flex: 1;
+          input {
+            width: 100%;
+            padding: $size-17;
+            border: 1px solid #e1cbba;
+            outline: none;
+            &:focus {
+              border-color: $main-color;
+            }
+          }
+          @include single-max-breakpoints("md-phone") {
+            width: 100%;
+          }
+        }
+        @include single-max-breakpoints("md-phone") {
+          flex-direction: column;
+          gap: 15px;
+        }
+      }
+    }
+  }
+}
+
+/* Community Section End */

@@ -1,0 +1,113 @@
+@use "../abstracts/" as *;
+
+/* Navigation Section Start */
+
+%display-flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+%color-same {
+  color: $heading-color;
+}
+nav {
+  position: sticky;
+  top: 0;
+  background-color: $white-color;
+  z-index: 200;
+  @include prefixes(box-shadow, $main-box-shadow);
+  .container {
+    .navigation {
+      position: relative;
+      @extend %display-flex;
+      align-items: center;
+      justify-content: space-between;
+      // Nav Logo
+      .nav-logo {
+        h2 {
+          @include style($font-size-30, $font-weight-900, uppercase, null);
+          @extend %color-same;
+        }
+      }
+      // Bars - Show Links
+      .bars {
+        cursor: pointer;
+        @include single-min-breakpoints("tablet") {
+          display: none;
+        }
+        &:hover {
+          + {
+            .nav-links {
+              display: block;
+            }
+          }
+        }
+      }
+      // Nav Links
+      .nav-links {
+        .links-list {
+          @extend %display-flex;
+          > li {
+            a {
+              display: block;
+              @include style($font-size-16, $font-weight-400, capitalize, null);
+              @extend %color-same;
+              @include transition(color);
+              &:hover {
+                color: $main-color;
+              }
+              @include single-max-breakpoints("tablet") {
+                padding: $size-20;
+                font-size: $font-size-15;
+              }
+              @include single-min-breakpoints("tablet") {
+                padding-top: $size-40;
+                padding-bottom: $size-40;
+              }
+            }
+            &:not(:first-of-type) {
+              a {
+                @include single-min-breakpoints("tablet") {
+                  padding-left: $size-20;
+                }
+              }
+            }
+            &:not(:last-of-type) {
+              a {
+                @include single-max-breakpoints("tablet") {
+                  border-bottom: 1px solid $border-color-2;
+                }
+                @include single-min-breakpoints("tablet") {
+                  padding-right: $size-20;
+                }
+              }
+            }
+          }
+          @include single-max-breakpoints("tablet") {
+            flex-direction: column;
+          }
+        }
+        @include single-max-breakpoints("tablet") {
+          background-color: $white-color;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          right: 0;
+          display: none;
+        }
+      }
+      // Nav Buttons
+      .nav-button {
+        @extend %display-flex;
+        gap: 7px;
+        @include single-max-breakpoints("tablet") {
+          display: none;
+        }
+      }
+      @include single-max-breakpoints("tablet") {
+        padding: $size-15 0;
+      }
+    }
+  }
+}
+/* Navigation Section End */

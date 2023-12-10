@@ -1,0 +1,135 @@
+@use "../abstracts/" as *;
+
+%flex-same {
+  display: flex;
+}
+
+%text-transform-same {
+  text-transform: capitalize;
+}
+
+/* Instructor Section Start */
+
+.instructor {
+  .instructor-container {
+    .instructor-header {
+      @extend %flex-same;
+      align-items: center;
+      justify-content: space-between;
+      .link {
+        a {
+          display: block;
+          @include style(
+            $font-size-16,
+            $font-weight-400,
+            capitalize,
+            $heading-color
+          );
+          text-decoration: underline;
+          @include transition((color, letter-spacing));
+          &:hover {
+            color: $main-color;
+            letter-spacing: 1.5px;
+          }
+        }
+      }
+      @include single-max-breakpoints("md-phone") {
+        flex-direction: column;
+        gap: 5px;
+        align-items: start;
+      }
+    }
+    .instructor-body {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 30px;
+      .instructor-column {
+        @include transition(transform);
+        .instructor-image {
+          position: relative;
+          margin-bottom: 15px;
+          .social {
+            @extend %flex-same;
+            flex-direction: column;
+            position: absolute;
+            bottom: 30px;
+            left: 30px;
+            gap: 10px;
+            .icon {
+              display: block;
+              width: 30px;
+              height: 30px;
+              background-color: $white-color;
+              text-align: center;
+              line-height: $line-height-30;
+              cursor: pointer;
+              @include transition(all);
+              opacity: 0;
+              i {
+                @include transition(color);
+              }
+              &:hover {
+                background-color: $main-color;
+                i {
+                  color: $white-color;
+                }
+              }
+              &:first-of-type {
+                @include prefixes(transition-delay, 0.03s);
+              }
+              &:nth-of-type(2) {
+                @include prefixes(transition-delay, 0.05s);
+              }
+              &:nth-of-type(3) {
+                @include prefixes(transition-delay, 0.07s);
+              }
+              &:last-of-type {
+                @include prefixes(transition-delay, 0.09s);
+              }
+            }
+          }
+        }
+        .instructor-name {
+          margin-bottom: 5px;
+          h3 {
+            @extend %text-transform-same;
+          }
+        }
+        .instructor-job {
+          span {
+            @extend %text-transform-same;
+          }
+        }
+        &:hover {
+          @include prefixes(transform, translateY(-15px));
+          .instructor-image {
+            .social {
+              .icon {
+                opacity: 1;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Instructor Section End */
+
+/*
+
+              &:first-of-type {
+                @include prefixes(transition-delay, 0.1s);
+              }
+              &:nth-of-type(2) {
+                @include prefixes(transition-delay, 0.3s);
+              }
+              &:nth-of-type(3) {
+                @include prefixes(transition-delay, 0.5s);
+              }
+              &:last-of-type {
+                @include prefixes(transition-delay, 0.7s);
+              }
+
+*/

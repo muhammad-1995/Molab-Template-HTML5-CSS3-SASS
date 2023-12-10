@@ -1,0 +1,23 @@
+@use "../abstracts/" as *;
+
+.container {
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  @include breakpoints("phone") {
+    max-width: 100%;
+  }
+  @include breakpoints("md-phone") {
+    max-width: 720px;
+  }
+  @include breakpoints("tablet") {
+    max-width: 960px;
+  }
+  @include breakpoints("laptop") {
+    max-width: 1140px;
+  }
+  @include breakpoints("desktop") {
+    max-width: 1320px;
+  }
+}

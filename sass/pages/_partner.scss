@@ -1,0 +1,25 @@
+@use "../abstracts/" as *;
+
+/* Partner Section Start */
+.partner {
+  .partner-header {
+    text-align: center;
+    h2 {
+      span {
+        color: $main-color;
+      }
+    }
+  }
+  .partner-card {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 40px;
+    .card {
+      img {
+        max-width: 160px;
+      }
+    }
+  }
+}
+/* Partner Section End */

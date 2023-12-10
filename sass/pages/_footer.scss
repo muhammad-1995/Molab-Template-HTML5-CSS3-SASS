@@ -1,0 +1,142 @@
+@use "../abstracts/" as *;
+
+%display-flex {
+  display: flex;
+}
+
+%white-color-same {
+  color: $white-color;
+}
+
+%flex-style {
+  @extend %display-flex;
+  flex-direction: column;
+}
+
+%text-style {
+  @include style($font-size-16, $font-weight-400, capitalize, null);
+  cursor: pointer;
+  @extend %white-color-same;
+}
+
+/* Footer Section Start */
+.footer-area {
+  background-color: $heading-color;
+  .container {
+    .footer {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      column-gap: 30px;
+      row-gap: 50px;
+      border-bottom: 1px solid $border-footer-color;
+      .column-box {
+        .box-header {
+          height: 34.5px;
+          margin-bottom: 35px;
+        }
+        &.box-1 {
+          .box-header {
+            h2 {
+              @include style($font-size-30, $font-weight-700, capitalize, null);
+              @extend %white-color-same;
+            }
+          }
+          .box-content {
+            @extend %display-flex;
+            flex-direction: column;
+            gap: 30px;
+            .text {
+              p {
+                @extend %white-color-same;
+              }
+            }
+            .box-social {
+              @extend %display-flex;
+              gap: 10px;
+              .icon {
+                width: 40px;
+                height: 40px;
+                text-align: center;
+                background-color: $bg-color;
+                cursor: pointer;
+                @include transition(background-color);
+
+                i {
+                  line-height: 40px;
+                  font-size: 20px;
+                  @extend %white-color-same;
+                }
+                &:hover {
+                  background-color: $main-color;
+                }
+              }
+            }
+          }
+        }
+        &.list {
+          .links-list {
+            @extend %flex-style;
+            gap: 20px;
+            li {
+              @extend %display-flex;
+              align-items: center;
+              gap: 20px;
+              .point {
+                width: 5px;
+                height: 5px;
+                background-color: $main-color;
+                @include prefixes(border-radius, 50%);
+              }
+              .link-name {
+                @extend %text-style;
+                @include transition(color);
+                @include single-max-breakpoints("tablet") {
+                  font-size: $font-size-15;
+                }
+              }
+              &:hover {
+                .link-name {
+                  color: $main-color;
+                }
+              }
+            }
+          }
+        }
+
+        &.box-4 {
+          .contact-information {
+            @extend %flex-style;
+            gap: 30px;
+            li {
+              @extend %display-flex;
+              align-items: center;
+              gap: 20px;
+              .contact-icon {
+                font-size: 20px;
+                color: $main-color;
+              }
+              .contact-info {
+                @extend %text-style;
+                @include single-max-breakpoints("tablet") {
+                  font-size: $font-size-15;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .copy-right {
+      padding: $size-30 0;
+      text-align: center;
+      p {
+        @include style($size-15, $font-weight-400, capitalize, null);
+        color: $white-color;
+        .myName {
+          color: $main-color;
+        }
+      }
+    }
+  }
+}
+/* Footer Section End */

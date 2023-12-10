@@ -1,0 +1,154 @@
+@use "../abstracts/" as *;
+
+%flex-same {
+  display: flex;
+}
+
+/* About Us Section Start */
+
+.about-us {
+  .about-area {
+    @extend %flex-same;
+    flex-wrap: wrap;
+    align-items: center;
+    @include single-max-breakpoints("tablet") {
+      gap: 30px;
+    }
+    & > div {
+      width: 50%;
+      @include single-max-breakpoints("tablet") {
+        width: 100%;
+      }
+    }
+    .left-box {
+      .image {
+        position: relative;
+        margin-right: 100px;
+        &::before {
+          content: "";
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          top: 40px;
+          right: -40px;
+          background-color: $bg-color-5;
+          z-index: -1;
+          @include single-max-breakpoints("tablet") {
+            display: none;
+          }
+        }
+        @include single-max-breakpoints("tablet") {
+          margin-right: 0;
+        }
+      }
+    }
+    .right-box {
+      .right-box-content {
+        .text-2 {
+          margin-top: 70px;
+          margin-bottom: 30px;
+        }
+      }
+    }
+    .author {
+      .sub-title {
+        margin-bottom: 5px;
+      }
+    }
+  }
+  .feature-area {
+    padding-top: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 30px;
+    ul {
+      padding: 0;
+    }
+    .column {
+      .column-content {
+        .header {
+          .sub-title {
+            position: relative;
+            margin-left: 70px;
+            &::before {
+              content: "";
+              position: absolute;
+              top: 50%;
+              left: -70px;
+              width: 60px;
+              height: 2.5px;
+              background-color: $bg-color-5;
+            }
+          }
+        }
+        .content {
+          ul {
+            li {
+              @extend %flex-same;
+              gap: 10px;
+              align-items: center;
+              .bullet {
+                width: 10px;
+                height: 10px;
+                background-color: $main-color;
+                @include prefixes(border-radius, 50%);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .achievements {
+    .achievements-head {
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      .box-content {
+        padding: $size-40 $size-60;
+        @extend %flex-same;
+        align-items: center;
+        gap: 40px;
+        width: fit-content;
+        background-color: $main-color;
+        @include prefixes(border-radius, 0 0 10px 10px);
+        .image {
+          max-width: 80px;
+          @include single-max-breakpoints("tablet") {
+            display: none;
+          }
+        }
+        .text {
+          @extend %flex-same;
+          flex-direction: column;
+          gap: 12px;
+        }
+        @include single-max-breakpoints("tablet") {
+          width: 100%;
+          padding: $size-20;
+        }
+      }
+    }
+    .general-information {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, auto));
+      gap: 25px;
+      .box {
+        * {
+          padding: 0;
+          margin: 0;
+        }
+        text-align: center;
+        h2 {
+          color: $main-color;
+        }
+        h4 {
+          margin-top: 15px;
+        }
+      }
+    }
+  }
+}
+
+/* About Us Section End */

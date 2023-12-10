@@ -1,0 +1,233 @@
+@use "../abstracts/" as *;
+
+// Reset Elements
+.reset {
+  * {
+    padding: 0;
+    margin: 0;
+  }
+}
+
+%line-height-same {
+  line-height: $line-height-24;
+}
+
+// Defult Button
+.defult-btn {
+  display: block;
+  width: fit-content;
+  position: relative;
+  overflow: hidden;
+  background-color: $main-color;
+  padding-top: $size-17;
+  padding-bottom: $size-17;
+  &.main {
+    padding-left: $size-60;
+    padding-right: $size-60;
+    @include style($font-size-16, $font-weight-400, capitalize, $white-color);
+    @extend %line-height-same;
+  }
+  &.custom {
+    padding-left: $size-25;
+    padding-right: $size-25;
+    @extend %line-height-same;
+  }
+  span {
+    position: relative;
+    &.icon {
+      color: $white-color;
+    }
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: $heading-color;
+    @include transition(transform);
+    @include prefixes(transform, scaleY(0));
+  }
+  &:hover {
+    &::before {
+      @include prefixes(transform, scaleY(1));
+    }
+  }
+}
+
+// Student Box
+%flex-same {
+  display: flex;
+}
+
+%flex-same-2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+%padding-same {
+  padding: $size-25;
+}
+
+%font-weight-same-2 {
+  font-weight: $font-weight-700;
+}
+
+.student-box {
+  position: absolute;
+  overflow: hidden;
+  width: fit-content;
+  @extend %flex-same;
+  .image {
+    @extend %flex-same-2;
+    @extend %padding-same;
+    background-color: $white-color;
+  }
+  .contnet {
+    @extend %flex-same-2;
+    @extend %padding-same;
+    gap: 10px;
+    background-color: $bg-color-1;
+    .sp-text {
+      @extend %font-weight-same-2;
+      @include style($font-size-20, null, capitalize, $heading-color);
+    }
+    .sp-number {
+      @extend %font-weight-same-2;
+      @include style($font-size-40, null, null, $main-color);
+    }
+  }
+  // Classes add-1 And add-2
+  &.add-1 {
+    top: 250px;
+    right: 7%;
+    .image {
+      @include single-max-breakpoints("md-phone") {
+        display: none;
+      }
+    }
+    @include prefixes(border-radius, 64.5px 0 0 64.5px);
+    @include single-max-breakpoints("md-phone") {
+      position: relative;
+      top: 100%;
+      right: 0;
+      width: 100%;
+      justify-content: center;
+      @include prefixes(border-radius, 0);
+    }
+    @media (min-width: 768px) and (max-width: 1750.98px) {
+      top: 70%;
+      right: 0;
+    }
+  }
+  &.add-2 {
+    z-index: 100;
+    position: relative;
+    margin-right: -100px;
+    @include prefixes(border-radius, 76px 0 0 76px);
+
+    .image {
+      @extend %padding-same;
+      @media (max-width: 1515px) {
+        display: none;
+      }
+    }
+    .contnet {
+      @extend %padding-same;
+      .sp-number {
+        @include style($font-size-20, $font-weight-400, null, $heading-color);
+        @include single-max-breakpoints("tablet") {
+          font-size: $font-size-16;
+        }
+      }
+      @media (max-width: 1515px) {
+        flex: 1;
+      }
+    }
+    @media (max-width: 1515px) {
+      margin-right: 0;
+      @include prefixes(border-radius, 0);
+    }
+    @media (max-width: 1515px) {
+      flex: 1;
+    }
+  }
+}
+
+// Main Padding
+.main-padding {
+  padding: $size-100 0;
+  @include single-max-breakpoints("tablet") {
+    padding: $size-60 0;
+  }
+}
+
+// Main Title Class
+.main-title {
+  margin-top: 0;
+  @include style($font-size-40, $font-weight-700, capitalize, $heading-color);
+  line-height: $line-height-48;
+  &.custom {
+    color: $white-color;
+  }
+  @include single-max-breakpoints("tablet") {
+    font-size: $font-size-25;
+  }
+}
+
+.sub-title {
+  @include style($font-size-20, $font-weight-500, capitalize, $heading-color);
+  &.white-color {
+    color: $white-color;
+  }
+  &.dark-color {
+    color: $heading-color;
+  }
+}
+
+// Main Paragraph
+.main-paragraph {
+  @include style($font-size-16, $font-weight-400, null, $paragraph-color);
+  line-height: $line-height-27;
+  &.p-white-color {
+    color: $white-color;
+  }
+  &.p-dark-color {
+    color: $heading-color;
+  }
+  @include single-max-breakpoints("tablet") {
+    font-size: $font-size-15;
+  }
+}
+
+// Heading Main Section
+.heading-main {
+  background-color: $bg-color-5;
+  text-align: center;
+  .pages {
+    a {
+      display: inline-block;
+      @include style(
+        $font-size-16,
+        $font-weight-400,
+        capitalize,
+        $paragraph-color
+      );
+    }
+    span {
+      display: inline-block;
+      margin: 0 10px;
+    }
+  }
+}
+
+// Margin Bottom 50
+.mr-t-50 {
+  margin-top: 50px;
+}
+
+.mr-t-100 {
+  margin-top: 100px;
+}

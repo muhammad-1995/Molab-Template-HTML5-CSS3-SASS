@@ -1,0 +1,29 @@
+@use "../abstracts/" as *;
+
+html {
+  font-size: 100%;
+  @include prefixes(box-sizing, border-box);
+}
+
+*,
+*::before,
+*::after {
+  @include prefixes(box-sizing, inherit);
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style-type: none;
+}
+
+img {
+  width: 100%;
+  vertical-align: bottom;
+}

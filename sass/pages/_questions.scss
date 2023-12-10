@@ -1,0 +1,73 @@
+@use "../abstracts/" as *;
+
+%flex-same {
+  display: flex;
+}
+
+%uppercase-same {
+  text-transform: uppercase;
+}
+
+/* Questions Section Start */
+
+.questions {
+  .heading-main {
+    .title {
+      h2 {
+        @extend %uppercase-same;
+      }
+    }
+    .pages {
+      .link-last {
+        @extend %uppercase-same;
+      }
+    }
+  }
+  .container {
+    .faq-header {
+      text-align: center;
+    }
+    .faq-contnet {
+      @extend %flex-same;
+      align-items: center;
+      gap: 50px;
+      .column {
+        flex: 1;
+        &.col-1 {
+          .accordion {
+            @extend %flex-same;
+            flex-direction: column;
+            gap: 10px;
+            .title {
+              border: 1px solid $border-color-2;
+              &:first-of-type {
+                background-color: $main-color;
+              }
+              padding: $size-15 $size-20;
+              cursor: pointer;
+              @extend %flex-same;
+              justify-content: space-between;
+              align-items: center;
+              span {
+                &.sub-title {
+                  @include single-max-breakpoints("phone") {
+                    font-size: $size-17;
+                  }
+                }
+                &.icon {
+                  font-size: 25px;
+                  color: $black-color;
+                }
+              }
+            }
+          }
+        }
+      }
+      @include single-max-breakpoints("tablet") {
+        flex-direction: column;
+      }
+    }
+  }
+}
+
+/* Questions Section End */

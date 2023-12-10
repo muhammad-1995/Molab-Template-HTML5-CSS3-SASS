@@ -1,0 +1,185 @@
+@use "../abstracts/" as *;
+
+%display-flex {
+  display: flex;
+}
+
+%padding-border {
+  padding: $size-10 $size-20;
+  border: 1px solid $border-color;
+}
+
+/* Courses Section Start */
+
+.courses {
+  .courses-container {
+    // Courses Form
+    .courses-form {
+      @extend %display-flex;
+      gap: 40px;
+      .select-box {
+        @extend %padding-border;
+        @include prefixes(border-radius, 5px);
+        cursor: pointer;
+        span {
+          text-transform: capitalize;
+        }
+      }
+      form {
+        @extend %display-flex;
+        @include prefixes(border-radius, 5px);
+        overflow: hidden;
+        input {
+          outline: none;
+          @extend %padding-border;
+          @include prefixes(border-radius, 5px 0 0 5px);
+          @include breakpoints("phone") {
+            flex: 1;
+          }
+        }
+        span {
+          line-height: 40px;
+          padding: 0 $size-10;
+          background-color: $main-color;
+          cursor: pointer;
+          i {
+            color: $white-color;
+          }
+        }
+        @include breakpoints("phone") {
+          width: 100%;
+        }
+      }
+      @include breakpoints("phone") {
+        flex-direction: column;
+        align-items: start;
+        gap: 10px;
+      }
+    }
+    // Courses Form
+    .courses-boxs {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      column-gap: 30px;
+      row-gap: 50px;
+      padding-top: $size-35;
+      .box {
+        @extend %display-flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        gap: 15px;
+        @include transition(transform);
+        &:hover {
+          @include prefixes(transform, translateY(-10px));
+        }
+        // Box Image
+        .box-image {
+          position: relative;
+          span {
+            &.sub-title {
+              background-color: #7360ff;
+              padding: $size-5 $size-20;
+              @include prefixes(border-radius, 20px 0 0 0);
+              position: absolute;
+              right: 0;
+              bottom: 0;
+              line-height: $line-height-30;
+            }
+          }
+        }
+        // Box Title
+        .box-title {
+          h3 {
+            @include style(
+              $font-size-16,
+              $font-weight-500,
+              capitalize,
+              $heading-color
+            );
+            @include transition(color);
+          }
+        }
+        &:hover {
+          .box-title {
+            h3 {
+              color: $main-color;
+            }
+          }
+        }
+        // Box Date
+        .box-date {
+          @extend %display-flex;
+          gap: 25px;
+          & > div {
+            span {
+              @include style($font-size-13, $font-weight-400, capitalize, null);
+              &.icon {
+                color: $main-color;
+              }
+              &.full-date {
+                color: $paragraph-color;
+              }
+              &.count {
+                color: $paragraph-color;
+              }
+            }
+          }
+        }
+        // Break
+        .break {
+          border: none;
+          border-top: 1px solid #eee;
+        }
+        // Box Name
+        .box-name {
+          position: relative;
+          @extend %display-flex;
+          align-items: center;
+          justify-content: space-between;
+          overflow: hidden;
+          .name {
+            @include style(
+              $font-size-16,
+              $font-weight-400,
+              capitalize,
+              $paragraph-color
+            );
+          }
+          .icon {
+            position: absolute;
+            right: 10px;
+            i {
+              color: $paragraph-color;
+            }
+          }
+          .before {
+            position: relative;
+            right: -87px;
+            background-color: $main-color;
+            padding: $size-5 $size-10;
+            @include style(
+              $font-size-14,
+              $font-weight-400,
+              capitalize,
+              $white-color
+            );
+            cursor: pointer;
+            @include transition(right);
+          }
+        }
+        &:hover {
+          .before {
+            right: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Courses Section End */
+
+/*
+
+
+*/
